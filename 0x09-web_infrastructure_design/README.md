@@ -23,3 +23,18 @@ To serve www.foobar.com over HTTPS for secure communication.
 ## Monitoring Clients:
 
 Collect data and send it to a centralized monitoring service like Sumologic.
+
+# Task  0
+https://imgur.com/gallery/user-wants-to-access-website-www-foobar-com-E8f9eEy
+
+# Task  1
+
+https://imgur.com/a/aBZHbYg
+# Task  2
+
+https://imgur.com/a/uuWTEZD
+# Task  3
+
+https://imgur.com/a/VVSs0S5
+
+
