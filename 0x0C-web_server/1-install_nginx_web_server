@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Install nginx and start it
+
+# Update package list and install Nginx
+apt-get -y install nginx
+service nginx start
+# Configure Nginx to listen on port 80
+ufw allow 'Nginx HTTP'
+# Create a simple HTML file
+echo "Hello World!\n" | sudo tee /var/www/html/index.nginx-debian.html
+# Restart Nginx without using systemctl
+service nginx restart
