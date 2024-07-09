@@ -2,7 +2,14 @@
 # balancer install
 sudo apt-get -y update
 sudo apt-get install -y haproxy
-echo "
+lb_config =\
+"
+defaults
+    mode http
+    timeout client 15s
+    timeout connect 10s
+    timeout server 15s
+    timeout http-request 10s
 frontend samson
     bind *:80
     mode http
@@ -11,6 +18,9 @@ frontend samson
 backend backendnodes
     balance roundrobin
     server 460916-web-01 100.26.227.3:80 check
-    server 460916-web-02 100.26.227.3:80  check " >> /etc/haproxy/haproxy.cfg
+    server 460916-web-02 100.26.227.3:80  check
+    "
+echo "$lb_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
+echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
 
 sudo service haproxy restart
