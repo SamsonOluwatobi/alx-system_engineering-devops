@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# balancer install
+sudo apt-get -y update
+sudo apt-get install -y haproxy
+echo "
+frontend samson
+    bind *:80
+    mode http
+    default_backend backendnodes
+
+backend backendnodes
+    balance roundrobin
+    server 460916-web-01 100.26.227.3:80 check
+    server 460916-web-02 100.26.227.3:80  check " >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
