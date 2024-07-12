@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Installing new server
+apt-get update
+apt-get install -y nginx
+service restart nginx
