@@ -2,4 +2,4 @@
 # Installing new server
 apt-get update
 apt-get install -y nginx
-service restart nginx
+sudo service nginx restart
