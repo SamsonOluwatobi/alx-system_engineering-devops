@@ -1,4 +1,17 @@
 #!/usr/bin/python3
+"""
+This module fetches employee task data from a REST API and exports it to a CSV file.
+
+Usage:
+    ./1-export_to_CSV.py <employee_id>
+
+Arguments:
+    employee_id: The ID of the employee whose task data is being exported.
+
+Output:
+    Exports the employee's tasks to a CSV file named USER_ID.csv with the format:
+    "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE".
+"""
 import csv
 import requests
 import sys

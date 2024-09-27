@@ -1,4 +1,14 @@
 #!/usr/bin/python3
+"""
+This module fetches task data for all employees from a REST API and exports it to a JSON file.
+
+Usage:
+    ./3-dictionary_of_list_of_dictionaries.py
+
+Output:
+    Exports all employees' tasks to a JSON file named todo_all_employees.json with the format:
+    { "USER_ID": [ {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ... ] }.
+"""
 import json
 import requests
 

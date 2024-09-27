@@ -1,4 +1,20 @@
 #!/usr/bin/python3
+"""
+This module fetches employee task data from a REST API and 
+displays the TODO list progress.
+
+Usage:
+    ./0-gather_data_from_an_API.py <employee_id>
+
+Arguments:
+    employee_id: The ID of the employee whose task progress 
+    is being fetched.
+
+Output:
+    Displays the employee's TODO list progress with the format:
+    Employee EMPLOYEE_NAME is done with tasks:
+    followed by a list of the titles of completed tasks.
+"""
 import requests
 import sys
 

@@ -1,7 +1,21 @@
 #!/usr/bin/python3
+"""
+This module fetches employee task data from a REST API and exports it to a JSON file.
+
+Usage:
+    ./2-export_to_JSON.py <employee_id>
+
+Arguments:
+    employee_id: The ID of the employee whose task data is being exported.
+
+Output:
+    Exports the employee's tasks to a JSON file named USER_ID.json with the format:
+    { "USER_ID": [{"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"}] }.
+"""
 import json
 import requests
 import sys
+
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
