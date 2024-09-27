@@ -1,44 +1,27 @@
 #!/usr/bin/python3
-"""
-This module fetches employee task data from a REST API and 
-displays the TODO list progress.
-
-Usage:
-    ./0-gather_data_from_an_API.py <employee_id>
-
-Arguments:
-    employee_id: The ID of the employee whose task progress 
-    is being fetched.
-
-Output:
-    Displays the employee's TODO list progress with the format:
-    Employee EMPLOYEE_NAME is done with tasks:
-    followed by a list of the titles of completed tasks.
+"""Script that, using REST API, for a given employee ID,
+   returns information about his/her TODO list progress.
 """
 import requests
 import sys
 
+
 if __name__ == "__main__":
-    # Get employee ID from command-line argument
-    employee_id = int(sys.argv[1])
-    
-    # Base URL for API requests
-    base_url = "https://jsonplaceholder.typicode.com"
-    
-    # Get employee data (name)
-    employee_url = f"{base_url}/users/{employee_id}"
-    employee = requests.get(employee_url).json()
-    employee_name = employee.get("name")
-    
-    # Get tasks data
-    tasks_url = f"{base_url}/todos?userId={employee_id}"
-    tasks = requests.get(tasks_url).json()
-    
-    # Filter tasks
-    completed_tasks = [task for task in tasks if task.get("completed")]
-    total_tasks = len(tasks)
-    
-    # Output result
-    print(f"Employee {employee_name} is done with tasks({len(completed_tasks)}/{total_tasks}):")
-    for task in completed_tasks:
-        print(f"\t {task.get('title')}")
+    # Base URL for the API
+    base_url = "https://jsonplaceholder.typicode.com/"
+
+    # Get user information based on provided employee ID
+    user = requests.get(base_url + "users/{}".format(sys.argv[1])).json()
+
+    # Get TODO list for the specified user
+    todos = requests.get(base_url + "todos", params={"userId": sys.argv[1]}).json()
+
+    # Filter completed tasks and extract their titles
+    completed = [t["title"] for t in todos if t["completed"]]
+
+    # Print the progress report
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+
+    # Print titles of completed tasks
+    [print("\t{}".format(c)) for c in completed]
